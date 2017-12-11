@@ -22,4 +22,27 @@ public class CaesarCipher {
             return ch - 'a';
     }
 
+    public String encrypt(String input, int key){
+        String encrypted = "";
+
+        for(int i=0; i<input.length(); i++){
+            char ch = input.charAt(i);
+
+            if(Character.isLetter(ch)){
+                int index = indexOf(ch);
+                index = (index + key) % 26;
+
+                if(Character.isUpperCase(ch))
+                    encrypted += uppercase[index];
+                else
+                    encrypted += lowercase[index];
+            }
+
+            else
+                encrypted += ch;
+        }
+
+        return encrypted;
+    }
+
 }
